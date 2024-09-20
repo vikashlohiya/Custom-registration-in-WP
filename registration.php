@@ -29,6 +29,10 @@ if (isset($_POST['fname'], $_POST['lname'], $_POST['email'], $_POST['password'])
             update_user_meta($user_id, 'last_name', $lname);
 
             $successmsg = "Registration successful! ";
+             $successmsg = "Registration successful! ";
+            $body='<div >Thank you for registering! Your account has been created successfully.</div>';
+            $sub='Welcome to the Wordpress Family!';
+            custom_mail($email,$fname.' '.$lname,$sub,$body);
         } else {
             $errormsg = "Something went wrong, Please try again";
         }
