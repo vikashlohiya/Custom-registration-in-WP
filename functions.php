@@ -1,5 +1,37 @@
 <?php
 
+// Start Email code
+// Load the PHPMailer class
+require_once ABSPATH . WPINC . '/PHPMailer/PHPMailer.php';
+require_once ABSPATH . WPINC . '/PHPMailer/SMTP.php';
+require_once ABSPATH . WPINC . '/PHPMailer/Exception.php';
+
+function custom_mail($to,$username,$subject,$body) {
+    $mail = new \PHPMailer\PHPMailer\PHPMailer();  
+                    
+    $mail->isSMTP();                              
+    $mail->Host       = 'smtp.gmail.com';      
+    $mail->SMTPAuth   = true;                   
+    $mail->Username   = 'vikashlohiya8716@gmail.com';
+    $mail->Password   = 'zzwoxispaxkuebll';    
+    $mail->SMTPSecure = 'tls';                   
+    $mail->Port       = 587;                     
+
+    $mail->setFrom('vikashlohiya8716@gmail.com', 'Vikash Lohiya');
+    $mail->addAddress($to, $username);   
+    $mail->isHTML(true);  
+    $mail->Subject = $subject;
+    $mail->Body    = $body;
+   
+
+    // Send the email and check for errors
+    if (!$mail->send()) {
+        return true;
+    } else {
+        return false;
+    }
+}
+// End Email code
 function custom_theme_setup() {
     register_nav_menus(array('primary-menu' => __('Primary Menu', 'demotheme'),));
 }
