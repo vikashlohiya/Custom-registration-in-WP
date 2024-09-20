@@ -12,12 +12,12 @@ function custom_mail($to,$username,$subject,$body) {
     $mail->isSMTP();                              
     $mail->Host       = 'smtp.gmail.com';      
     $mail->SMTPAuth   = true;                   
-    $mail->Username   = 'vikashlohiya8716@gmail.com';
-    $mail->Password   = '';    
+    $mail->Username   = 'put smtp user name';
+    $mail->Password   = 'put smtp password';    
     $mail->SMTPSecure = 'tls';                   
     $mail->Port       = 587;                     
 
-    $mail->setFrom('vikashlohiya8716@gmail.com', 'Vikash Lohiya');
+    $mail->setFrom('put your sender mail', 'Vikash Lohiya');
     $mail->addAddress($to, $username);   
     $mail->isHTML(true);  
     $mail->Subject = $subject;
